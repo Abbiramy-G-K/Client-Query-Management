@@ -73,14 +73,11 @@ def show_dashboard():
     queries = cursor.fetchall()
     conn.close()
 
-    # Split queries by status
     open_queries = [q for q in queries if q["status"] == "Open"]
     closed_queries = [q for q in queries if q["status"] == "Closed"]
 
-    # Layout: 2 columns
     col1, col2 = st.columns(2)
 
-    # Closed Queries Section
     with col1:
         st.subheader("Closed Queries")
         if not closed_queries:
@@ -95,7 +92,6 @@ def show_dashboard():
                 if q.get("answer"):
                     st.markdown(f"**Answer:** {q['answer']}")
 
-    # --- Open Queries (Red) ---
     with col2:
         
         st.subheader("Open Queries")
@@ -108,7 +104,6 @@ def show_dashboard():
                 st.markdown(f"**Description:** {q['query_description']}")
                 st.markdown(f"**Created:** {q['query_created_time']}")
 
-                # Answer input + close button
                 answer = st.text_area("Answer", value=q.get("answer") or "", key=f"ans_{q['query_id']}")
                 if st.button("Close Query", key=f"close_{q['query_id']}"):
                     conn = get_db_connection()

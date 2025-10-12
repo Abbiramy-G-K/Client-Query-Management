@@ -49,7 +49,6 @@ def show():
 
     st.title("Client Dashboard")
 
-    # Top row with Queries heading and Logout
     col1, col2 = st.columns([8, 2])
     with col1:
         st.header("Queries")
@@ -59,18 +58,14 @@ def show():
             st.success("Logged out successfully!")
             st.stop()
 
-    # Ensure session state
     if "show_form" not in st.session_state:
         st.session_state.show_form = False
 
-    # --- Queries ---
     cursor.execute("SELECT * FROM client_queries ORDER BY query_created_time DESC")
     queries = cursor.fetchall()
 
-    # Layout: Closed on left, Open on right
     col_left, col_right = st.columns(2)
 
-    # Closed Queries + Create Button
     with col_left:
         top_left, top_right = st.columns([6, 2])
         with top_left:
@@ -79,7 +74,6 @@ def show():
             if st.button("Create New Query", key="create_query"):
                 st.session_state.show_form = not st.session_state.show_form
 
-        # Show form if toggled
         if st.session_state.show_form:
             st.subheader("Submit New Query")
             with st.form("new_query_form"):
@@ -102,7 +96,6 @@ def show():
                     st.success(" Query submitted successfully!")
                     st.session_state.show_form = False
 
-        # Closed queries list
         closed_queries = [q for q in queries if q["status"] == "Closed"]
         if not closed_queries:
             st.info("No closed queries")
@@ -119,7 +112,6 @@ def show():
                     if q.get('answer'):
                         st.markdown(f"** Answer:** {q['answer']}")
 
-    # Open Queries (right column)
     with col_right:
         st.markdown("#### Open Queries")
         open_queries = [q for q in queries if q["status"] == "Open"]
