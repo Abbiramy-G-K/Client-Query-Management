@@ -102,15 +102,15 @@ def show():
         else:
             for q in closed_queries:
                 with st.expander(f"{q['query_heading']}"):
-                    st.markdown(f"** Description:** {q['query_description']}")
-                    st.markdown(f"** Email:** {q['mail_id']}")
-                    st.markdown(f"** Mobile:** {q['mobile_number']}")
-                    st.markdown(f"** Status:** {q['status']}")
-                    st.markdown(f"** Created At:** {q['query_created_time']}")
+                    st.markdown(f" Description: {q['query_description']}")
+                    st.markdown(f" Email: {q['mail_id']}")
+                    st.markdown(f" Mobile: {q['mobile_number']}")
+                    st.markdown(f" Status: {q['status']}")
+                    st.markdown(f" Created At: {q['query_created_time']}")
                     if q['query_closed_time']:
-                        st.markdown(f"** Closed At:** {q['query_closed_time']}")
+                        st.markdown(f" Closed At: {q['query_closed_time']}")
                     if q.get('answer'):
-                        st.markdown(f"** Answer:** {q['answer']}")
+                        st.markdown(f" Answer: {q['answer']}")
 
     with col_right:
         st.markdown("#### Open Queries")
@@ -120,13 +120,13 @@ def show():
         else:
             for q in open_queries:
                 with st.expander(f" {q['query_heading']}"):
-                    st.markdown(f"** Description:** {q['query_description']}")
-                    st.markdown(f"** Email:** {q['mail_id']}")
-                    st.markdown(f"** Mobile:** {q['mobile_number']}")
-                    st.markdown(f"** Status:** {q['status']}")
-                    st.markdown(f"** Created At:** {q['query_created_time']}")
+                    st.markdown(f" Description: {q['query_description']}")
+                    st.markdown(f" Email: {q['mail_id']}")
+                    st.markdown(f" Mobile: {q['mobile_number']}")
+                    st.markdown(f" Status: {q['status']}")
+                    st.markdown(f" Created At: {q['query_created_time']}")
                     if q.get('answer'):
-                        st.markdown(f"** Answer:** {q['answer']}")
+                        st.markdown(f" Answer: {q['answer']}")
 
     cursor.close()
     conn.close()

@@ -84,11 +84,11 @@ def show_dashboard():
             st.info("No closed queries.")
         for q in closed_queries:
             with st.expander(f"{q['query_heading']}", expanded=False):
-                st.markdown(f"**Email:** {q['mail_id']}")
-                st.markdown(f"**Mobile:** {q['mobile_number']}")
-                st.markdown(f"**Description:** {q['query_description']}")
-                st.markdown(f"**Created:** {q['query_created_time']}")
-                st.markdown(f"**Closed:** {q['query_closed_time']}")
+                st.markdown(f"Email: {q['mail_id']}")
+                st.markdown(f"Mobile: {q['mobile_number']}")
+                st.markdown(f"Description: {q['query_description']}")
+                st.markdown(f"Created: {q['query_created_time']}")
+                st.markdown(f"Closed: {q['query_closed_time']}")
                 if q.get("answer"):
                     st.markdown(f"**Answer:** {q['answer']}")
 
@@ -99,10 +99,10 @@ def show_dashboard():
             st.info("No open queries.")
         for q in open_queries:
             with st.expander(f"{q['query_heading']}", expanded=False):
-                st.markdown(f"**Email:** {q['mail_id']}")
-                st.markdown(f"**Mobile:** {q['mobile_number']}")
-                st.markdown(f"**Description:** {q['query_description']}")
-                st.markdown(f"**Created:** {q['query_created_time']}")
+                st.markdown(f"Email: {q['mail_id']}")
+                st.markdown(f"Mobile: {q['mobile_number']}")
+                st.markdown(f"Description: {q['query_description']}")
+                st.markdown(f"Created: {q['query_created_time']}")
 
                 answer = st.text_area("Answer", value=q.get("answer") or "", key=f"ans_{q['query_id']}")
                 if st.button("Close Query", key=f"close_{q['query_id']}"):
