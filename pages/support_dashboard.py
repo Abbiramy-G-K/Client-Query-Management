@@ -90,7 +90,7 @@ def show_dashboard():
                 st.markdown(f"Created: {q['query_created_time']}")
                 st.markdown(f"Closed: {q['query_closed_time']}")
                 if q.get("answer"):
-                    st.markdown(f"**Answer:** {q['answer']}")
+                    st.markdown(f"Answer: {q['answer']}")
 
     with col2:
         
