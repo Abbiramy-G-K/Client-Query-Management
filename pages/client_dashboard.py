@@ -87,7 +87,7 @@ def show():
                     cursor.execute(
                         """
                         INSERT INTO client_queries 
-                        (email, mobile_number, query_heading, query_description, status, query_created_time, query_closed_time) 
+                        (mail_id, mobile_number, query_heading, query_description, status, query_created_time, query_closed_time) 
                         VALUES (%s, %s, %s, %s, 'Open', %s, NULL)
                         """,
                         (email, mobile, heading, description, datetime.now())
